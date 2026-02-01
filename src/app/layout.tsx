@@ -1,10 +1,18 @@
 import type { Metadata } from "next";
-import { Inter,IBM_Plex_Mono} from "next/font/google";
+import { Inter, IBM_Plex_Mono } from "next/font/google";
 
 import { ThemeProvider } from "@/components/theme-provider";
+import {dark} from "@clerk/themes";
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 
 import "./globals.css";
-
 
 const inter = Inter({
   variable: "--font-inter",
@@ -14,7 +22,7 @@ const inter = Inter({
 const plexMono = IBM_Plex_Mono({
   variable: "--font-plex-mono",
   subsets: ["latin"],
-  weight:["400","500","600","700"]
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -28,20 +36,32 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-
-          <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${inter.variable} ${plexMono.variable} antialiased`}
-      > 
-        <ThemeProvider
+    <ClerkProvider appearance={{theme: dark}}>
+      <html lang="en" suppressHydrationWarning>
+        <body className={`${inter.variable} ${plexMono.variable} antialiased`}>
+          <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
           >
-        {children}
-        </ThemeProvider>
-      </body>
-    </html>
+            <header>
+              <SignedOut>
+                <SignInButton />
+                <SignUpButton>
+                  <button className="bg-rose-500 text-white p-2 rounded">
+                    Sign Up
+                  </button>
+                </SignUpButton>
+              </SignedOut>
+              <SignInButton>
+                <UserButton />
+              </SignInButton>
+            </header>
+            {children}
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
