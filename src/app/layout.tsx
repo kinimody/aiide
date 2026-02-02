@@ -3,7 +3,6 @@
 import type { Metadata } from "next";
 import { Inter, IBM_Plex_Mono } from "next/font/google";
 
-import { ThemeProvider } from "@/components/theme-provider";
 import { Providers } from "@/components/providers";
 
 import "./globals.css";
