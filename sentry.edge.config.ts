@@ -19,6 +19,6 @@ Sentry.init({
   sendDefaultPii: true,
   integrations: [
     Sentry.vercelAIIntegration({ force: true }),
-    Sentry.consoleIntegration({levels:["log","warn","error"]})
+    Sentry.consoleIntegration({levels:["log","warn","error"]}),
   ],
 });
