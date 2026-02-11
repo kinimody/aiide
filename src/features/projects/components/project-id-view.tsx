@@ -57,15 +57,16 @@ const ProjectIdView = ({ projectId }: { projectId: Id<"projects"> }) => {
           )}
         >
           <div>Preview</div>
-          <div
-            className={cn(
-              "absolute inset-0",
-              activeView === "editor" ? "visible" : "invisible",
-            )}
-          >
-            <div>Editor</div>
-          </div>
         </div>
+        <div
+          className={cn(
+            "absolute inset-0",
+            activeView === "editor" ? "visible" : "invisible",
+          )}
+        >
+          <div>Editor</div>
+        </div>
+      </div>
       </div>
     </div>
   );
