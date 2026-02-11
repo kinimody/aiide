@@ -37,7 +37,7 @@ interface ProjectListProps {
 }
 const ContinueCard = ({ data }: { data: Doc<"projects"> }) => {
   return (
-    <div className="fle flex-col gap-2">
+    <div className="flex flex-col gap-2">
       <span className="text-xs text-muted-foreground">Last updated</span>
       <Button
         className="h-auto items-start justify-start p-4 bg-background border rounded-none flex flex-col gap-2"
@@ -45,7 +45,7 @@ const ContinueCard = ({ data }: { data: Doc<"projects"> }) => {
         asChild
       >
         <Link href={`/projects/${data._id}`} className="group">
-          <div className="flex items.center justify-between w-full">
+          <div className="flex items-center justify-between w-full">
             <div className="flex items-center gap-2">
               {getProjectIcon(data)}
               <span className="font-medium truncate">{data.name}</span>
@@ -67,8 +67,10 @@ const ProjectItem = ({ data }: { data: Doc<"projects"> }) => {
       href={`/projects/${data._id}`}
       className="text-sm text-foreground/60 font-medium hover:text-foreground py-1 flex items-center justify-between w-full group"
     >
-      <div className="flex items-center gap-2">{getProjectIcon(data)}</div>
-      <span className="truncate">{data.name}</span>
+      <div className="flex items-center gap-2">
+        {getProjectIcon(data)}
+        <span className="truncate">{data.name}</span>
+      </div>
       <span className="text-xs text-muted-foreground group-hover:text-foreground/60 transition-colors">
         {formatTimestamp(data.updatedAt)}
       </span>

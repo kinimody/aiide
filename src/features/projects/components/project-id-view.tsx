@@ -17,7 +17,7 @@ const Tab = ({
     <div
       onClick={onClick}
       className={cn(
-        "flex items-center gap-2 h-full px-3 cursor-pointer text-muted-foreground broder-r hover:bg-foreground/30",
+        "flex items-center gap-2 h-full px-3 cursor-pointer text-muted-foreground border-r hover:bg-foreground/30",
         isActive && "bg-background text-foreground",
       )}
     >
